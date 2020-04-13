@@ -1,0 +1,41 @@
+
+<div class= "container">
+    <h1 class="table">Welcome to Home</h1> 
+    
+     <!-- <button type="submit" (click)=getData()>{{csvData}}Submit</button> -->
+     
+     <div class="d-flex justify-content-between p-2" >
+      <pagination [itemsPerPage]="pageSize" [totalItems]="totalItems" (click)="getPage()" [(ngModel)]="page"
+      [rotate]=true [maxSize]="5" [directionLinks]="true" [boundaryLinks]="true"></pagination>
+       
+      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize"  >
+        <option [value]="1000">1000 of {{totalItems}}</option>
+        <option [value]="5000">5000 of {{totalItems}}</option>
+        <option [value]="10000">10000 of {{totalItems}}</option>
+      </select>
+      <button type="button" class="btn btn-primary" (click)=getData() >Export to CSV</button>
+    </div>
+  
+    <table class="table"   >
+        <thead class="thead-dark">
+            <tr>
+              <th>id</th>
+              <th>firstname</th>
+              <th>lastname</th>
+              <th>email</th>
+              <th>laptopAvailable</th>
+            </tr>
+          </thead>
+          <tbody>
+    <tr *ngFor="let cust of homeData " >
+    <td scope="row">{{cust.id}}</td>
+    <td>{{cust.firstname}}</td>
+    <td>{{cust.lastname}}</td>
+    <td>{{cust.email}}</td>
+    <td>{{cust.laptopAvailable}}</td>
+    </tr>
+</tbody>
+
+    </table>
+</div>
+
